@@ -75,24 +75,32 @@ window.addEventListener('load', function() {
     // 1.点击右切换按钮切换到右下一张轮播图
     var num = 0
     var littlecircle = 0
+    var flag = true
     arrow_r.addEventListener('click', function() {
-            // 当走到最后一张图片，即不是真正意义上当第一张时，将ul的left值设为0，
-            // 就可以重新开始移动轮播图的位置了
-            if (num == 4) {
-                ul.style.left = 0;
-                num = 0;
+            // 使用flag变量做为节流阀控制点击事件的访问
+            if (flag) {
+                // 一个动画开始时关闭节流阀，
+                flag = false
+                    // 当走到最后一张图片，即不是真正意义上当第一张时，将ul的left值设为0，
+                    // 就可以重新开始移动轮播图的位置了
+                if (num == 4) {
+                    ul.style.left = 0;
+                    num = 0;
+                }
+                num++;
+                animation(ul, -num * 730, function() {
+                        // 动画结束时开启节流阀
+                        flag = true
+                    })
+                    // 2.点击右翻按钮时让小圆圈一起的样式一起跟着变化
+                littlecircle++
+                // 当littlecircle为0时处于第一个圆圈，点击意味着要改变第二个圆圈，所以在点击方法开始时给其自加1
+                if (littlecircle == 4) {
+                    littlecircle = 0
+                }
+                // 3.调用pot当前样式跟随函数
+                circleChange()
             }
-            num++;
-            animation(ul, -num * 730)
-                // 2.点击右翻按钮时让小圆圈一起的样式一起跟着变化
-            littlecircle++
-            // 当littlecircle为0时处于第一个圆圈，点击意味着要改变第二个圆圈，所以在点击方法开始时给其自加1
-            if (littlecircle == 4) {
-                littlecircle = 0
-            }
-            // 3.调用pot当前样式跟随函数
-            circleChange()
-
         })
         // 点击做切换按钮切换到做下一张轮播图
         // arrow_l.addEventListener('click', function() {
@@ -103,22 +111,27 @@ window.addEventListener('load', function() {
 
     // 五.左切换按钮的实现
     arrow_l.addEventListener('click', function() {
-        // 当轮播图窗口处于第一张图片时，此时向左点击，ul的位置应该跳到真正最后一张的位置，即所有图片的长度减1的那张图片
-        // 这个位置ul是处于负数状态的
-        if (num == 0) {
-            num = ul.children.length - 1
-            ul.style.left = -num * 730 + 'px';
+        if (flag) {
+            flag = false
+                // 当轮播图窗口处于第一张图片时，此时向左点击，ul的位置应该跳到真正最后一张的位置，即所有图片的长度减1的那张图片
+                // 这个位置ul是处于负数状态的
+            if (num == 0) {
+                num = ul.children.length - 1
+                ul.style.left = -num * 730 + 'px';
+            }
+            num--;
+            animation(ul, -num * 730, function() {
+                    flag = true
+                })
+                // 2.点击左翻按钮时让小圆圈一起的样式一起跟着变化
+            littlecircle--
+            // 当littlecircle小于0时处于第一个圆圈，点击意味着要跳到第4个圆圈，共5张图片故
+            if (littlecircle < 0) {
+                littlecircle = ol.children.length - 1
+            }
+            // 3.调用pot当前样式跟随函数
+            circleChange()
         }
-        num--;
-        animation(ul, -num * 730)
-            // 2.点击左翻按钮时让小圆圈一起的样式一起跟着变化
-        littlecircle--
-        // 当littlecircle小于0时处于第一个圆圈，点击意味着要跳到第4个圆圈，共5张图片故
-        if (littlecircle < 0) {
-            littlecircle = ol.children.length - 1
-        }
-        // 3.调用pot当前样式跟随函数
-        circleChange()
     })
 
     // 六.改变当前pot样式函数
