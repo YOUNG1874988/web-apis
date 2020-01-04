@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="tang">tang bo hu</button>
+<div id="time">2019-12-30</div>
+<div class="box">baoji</div>
+<div class="box">xi an</div>
+<div class="box">shenzhen</div>
+<ul>
+    <li>hello Tokyo,I am coming!1</li>
+    <li>hello Tokyo,I am coming!2</li>
+    <li>hello Tokyo,I am coming!3</li>
+    <li>hello Tokyo,I am coming!4</li>
+    <li>hello Tokyo,I am coming!5</li>
+</ul>
+<ol>
+    <li>hello Japan,I am coming!1</li>
+    <li>hello Japan,I am coming!2</li>
+    <li>hello Japan,I am coming!3</li>
+    <li>hello Japan,I am coming!4</li>
+    <li>hello Japan,I am coming!</li>
+    <li>hello Japan,I am coming!</li>
+    <li>hello Japan,I am coming!</li>
+</ol>
+<ul id="yang">
+    <li>sheng pi zi</li>
+    <li>sheng pi zi</li>
+    <li>sheng pi zi</li>
+    <li>sheng pi zi</li>
+    <li>sheng pi zi</li>
+    <li>sheng pi zi</li>
+    <li>sheng pi zi</li>
+    <li>sheng pi zi</li>
+</ul>
+<script>
+// <!-- 1.通过元素id来获取DOM元素  -->
+    const timer = document.getElementById('time');
+console.log('this is time box');
+console.log(timer);
+    //这样获取到的DOM元素类型为对象；
+    console.log(typeof timer);
+console.log('this is time object');
+//通过dir可以打印文档对象模型
+console.dir(timer);
+//    2.通过DOM标签名来获取
+//无论获取到的该标签有或者没有，多或者少，这样获取到的DOM元素为伪数组类型
+    const lis = document.getElementsByTagName('li');
+console.log(lis);
+console.log(lis[3]);
+
+
+const ol = document.getElementsByTagName('ol');
+console.log(ol);
+console.log(ol[0].getElementsByTagName('li'))
+    const yang = document.getElementById('yang')
+console.log('this is yang')
+console.log(yang)
+    //用这种方式可以找到某个元素内的dom元素
+    const young = yang.getElementsByTagName('li')
+    console.log('this is li in yang')
+console.log(young);
+
+
+//h5新增  querySelector返回指定选择器的第一个元素对象
+    const firstBox = document.querySelector('.box')
+    console.log(firstBox)
+//    querySelectorAll 返回指定选择器的所有元素对象
+    const allBox = document.querySelectorAll('.box')
+    console.log(allBox)
+console.log('the body is');
+    console.log(document.body)
+    console.dir(document.body)
+//    获取html元素比较特殊
+console.log('this is html');
+console.dir(document.documentElement)
+    const tang = document.getElementById('tang')
+    tang.onclick=function () {
+    alert('dian qiu xiang!')
+
+    }
+</script>
+</body>
+</html>

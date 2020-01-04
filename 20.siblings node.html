@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box"></div>
+    <span class="new"></span>
+</body>
+<script>
+    const box = document.getElementsByClassName('box')
+    console.log('hello')
+        // 下一个节点
+    console.log(box.nextSibling)
+    const young = document.getElementsByClassName('new')
+    console.log(young)
+        // 上一个节点
+    console.log(young.previousSibling)
+        // 下一个元素节点，只有ie9才支持，存在兼容性问题
+    console.log(box.nextElementSibling)
+        // 下一个元素节点
+    console.log(box.previousElementSibling)
+</script>
+
+</html>

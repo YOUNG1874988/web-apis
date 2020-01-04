@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            /* margin: 0; */
+        }
+        
+        .box {
+            width: 400px;
+            background-color: red;
+        }
+        
+        input {
+            width: 300px;
+            height: 30px;
+            border: 2px solid red;
+        }
+        
+        .search {
+            display: inline-block;
+            color: white;
+            background-color: red;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text">
+        <div class="search">search</div>
+
+
+    </div>
+    <script>
+        // function:once the 's' key is been pressed and uped
+        // ,onfocus to the search input box
+        // 1.在整个文档中监听各个键的弹起
+        const search = document.querySelector('input')
+        document.addEventListener('keyup', function(e) {
+                // 检查弹起的键是不是s键
+                if (e.keyCode === 83) {
+                    // 让搜索框获得焦点
+                    search.focus()
+                }
+            })
+            // 2.比对每个弹起的键的AscII码值，看是否和s键的相等
+            // 3.如果是s键弹起了，则让搜索输入框聚焦
+    </script>
+</body>
+
+</html>

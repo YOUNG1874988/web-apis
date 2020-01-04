@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: orange;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>baidu</button>
+    <div>5秒钟之后进入首页</div>
+    <script>
+        var btn = document.querySelector('button')
+        var ad = document.querySelector('div')
+            // btn.addEventListener('click', function() {
+            //         // 点击后会跳转到新到域名
+            //         location.href = 'https://www.jd.com/?cu=true&utm_source=baidu-pinzhuan&utm_medium=cpc&utm_campaign=t_288551095_baidupinzhuan&utm_term=0f3d30c8dba7459bb52f2eb5eba8ac7d_0_e8158d591d154e75a70432b43b75c91e'
+            //     })
+            // function:进入页面后开始倒计时，5秒钟之后跳转到首页
+        var sec = 5
+        var timer = null
+        timer = setInterval(function() {
+            sec--
+            ad.innerHTML = '' + sec + '秒后进入首页'
+
+        }, 1000)
+
+        setTimeout(() => {
+            clearInterval(timer)
+                // 5秒钟之后去除间隔定时并且跳转到另外到页面
+            location.href = 'https://www.jd.com/?cu=true&utm_source=baidu-pinzhuan&utm_medium=cpc&utm_campaign=t_288551095_baidupinzhuan&utm_term=0f3d30c8dba7459bb52f2eb5eba8ac7d_0_e8158d591d154e75a70432b43b75c91e'
+        }, 5000);
+    </script>
+
+</body>
+
+</html>

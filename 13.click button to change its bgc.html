@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+        <button>hello world</button>
+    </div>
+
+    <script>
+        const btns = document.querySelectorAll('button')
+            // function:当前有这么多button，鼠标点击某一个button时，该button 
+            // 的背景颜色发生变化
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].onclick = function() {
+                // 1.去掉所有按钮的背景颜色
+                for (let j = 0; j < btns.length; j++) {
+                    btns[j].style.backgroundColor = ''
+                }
+                // 2.将当前按钮的背景颜色改为orange
+                this.style.backgroundColor = 'orange'
+
+            }
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>

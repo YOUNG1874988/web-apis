@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            background-color: lightcoral;
+        }
+        
+        button {
+            width: 200px;
+            height: 100px;
+            background-color: orange;
+            /* 给父元素设置相对定位才能获取子元素相对于父元素的offsetTop和offsetLeft值 */
+            position: relative;
+            bottom: -450px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"> <button>here</button>
+
+    </div>
+    <script>
+        var box = document.querySelector('.box')
+        var btn = document.querySelector('button')
+            // function:once the box been clicked,console the distance of the 
+            // mouse index to the box's top and left
+        console.log(btn.offsetLeft)
+        console.log(btn.offsetTop)
+    </script>
+</body>
+
+</html>

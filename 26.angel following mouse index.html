@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 100px;
+            /* 为了改变图片的位置，要使用绝对定位 */
+            position: absolute;
+            top: 50px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./angel.jpeg" alt="">
+    <script>
+        // function:make the angel following the mouse index to move
+        // 1.获取当前鼠标相对于视口的x,y坐标
+        // 2.给document添加鼠标移动事件
+        // 3.在移动事件中改变图片的位置，把鼠标的坐标值给图片的坐标
+        const img = document.querySelector('img')
+        document.onmousemove = function(e) {
+            console.log(e.clientX)
+            console.log(e.clientY)
+            console.log('hello')
+                // 这里给图片的位置赋值的时候要注意使用单引号包裹整个值；
+                // 需要变量代入的时候采用引引++的方法代入
+            img.style.top = '' + e.clientY - 50 + 'px'
+            img.style.left = '' + e.clientX - 40 + 'px'
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .newbox {
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <p class="newbox"> </p>
+    <button>start the purple box</button>
+    <button class="four">go to 400</button>
+    <button class="eight">go to 800</button>
+    <script>
+        var box = document.querySelector('.box')
+        var newbox = document.querySelector('.newbox')
+        var btn = document.querySelector('button')
+        var fourbtn = document.querySelector('.four')
+        var eightbtn = document.querySelector('.eight')
+        fourbtn.addEventListener('click', function() {
+            animation(box, 400, function() {
+                console.log('it is time to change your bgc')
+                box.style.backgroundColor = 'blue'
+            })
+        })
+        eightbtn.addEventListener('click', function() {
+            animation(box, 800)
+        })
+
+
+        function animation(obj, target, callback) {
+            // 每一个动画开始之前先清除之前的全部定时器
+            clearInterval(obj.timer)
+            obj.timer = setInterval(() => {
+                // 缓动步长计算,如果步长是整数就取整数并且往大取；如果步长是负数也取整数并往小取
+                step = (target - obj.offsetLeft) / 10
+                step = step > 0 ? Math.ceil(step) : Math.floor(step)
+                    // 这里的停止计时的条件要放到计时器里面，这样才能扫描到该条件并结束计时
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer)
+                        // 当定时器结束当时候检查是否有回调函数；如果有则执行回调函数
+                    if (callback) {
+                        callback()
+                    }
+                }
+
+                obj.style.left = obj.offsetLeft + step + 'px'
+                    // obj.style.top = obj.offsetTop + 5 + 'px'
+            }, 15);
+        }
+        btn.addEventListener('click', function() {
+            animation(newbox, 400)
+        })
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .headrow {
+            background-color: #D1D3D0;
+        }
+        
+        table {
+            width: 400px;
+            /* 让表格水平居中 */
+            position: absolute;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: 100px;
+        }
+        
+        td {
+            text-align: center;
+        }
+        
+        .bodyrow {
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./25.1 create table dynamically datas.js"></script>
+    <table border="1" cellspacing=0 cellpadding=5>
+        <thead>
+            <tr class="headrow">
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        <!-- <tbody>
+            <tr>
+                <td>唯一落</td>
+                <td>JavaScript</td>
+                <td>33</td>
+                <td><a href="">删除</a></td>
+            </tr>
+            <tr>
+                <td>弘历</td>
+                <td>JavaScript</td>
+                <td>44</td>
+                <td><a href="">删除</a></td>
+            </tr>
+            <tr>
+                <td>复还</td>
+                <td>JavaScript</td>
+                <td>99</td>
+                <td><a href="">删除</a></td>
+            </tr>
+            <tr>
+                <td>明玉</td>
+                <td>JavaScript</td>
+                <td>100</td>
+                <td><a href="">删除</a></td>
+            </tr>
+        </tbody> -->
+        <script>
+            //                 使用创建元素节点的方式动态获取数据
+            // 实现思路：检查存储数据的数组的长度，有多长，就创建多少行，添加到tbody中
+            // 获取tbody元素
+            const tbody = document.querySelector('tbody')
+                // 1.获取数据数组长度
+            const students = datas.length
+            console.log(students)
+                // 2.开始在tbody中创建行，并将其添加到tbody中，直到创建的行数等于数据数组长度为止
+            for (let i = 0; i < students; i++) {
+                const row = document.createElement('tr')
+                    //2.1 给新创建的行一个新类名，避免与表头的tr混淆
+                row.className = 'bodyrow'
+                tbody.appendChild(row)
+
+            }
+            // 3.获取创建的每一行，并在其中创建并添加4个td
+            const rows = document.getElementsByClassName('bodyrow')
+            for (let j = 0; j < rows.length; j++) {
+                // 3.1 在每一行中创建并添加4个单元格
+                for (let m = 0; m < 4; m++) {
+                    const td = document.createElement('td')
+                    rows[j].appendChild(td)
+                }
+            }
+            // 4.遍历数据数组，把里面每一个对象的各个值给对应的行的各个td，每一次遍历要先获取到对应行的所有td
+            for (let n = 0; n < datas.length; n++) {
+                // 获取每一行的所有td
+                const tds = rows[n].querySelectorAll('td')
+                console.log('this is tds')
+                console.log(tds)
+                    // 将每个对象的name给每一行的第一个单元格，依次类推进行赋值操作
+                tds[0].innerText = datas[n].name
+                tds[1].innerText = datas[n].subject
+                tds[2].innerText = datas[n].score
+                tds[3].innerHTML = '<a>删除</a>'
+            }
+
+            const as = document.querySelectorAll('a')
+            console.log(as)
+            for (let b = 0; b < as.length; b++) {
+                as[b].onclick = function() {
+                    // 点击a标签移除所在行
+                    tbody.removeChild(this.parentNode.parentNode)
+                }
+            }
+        </script>
+
+
+
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .box {
+        width: 400px;
+        position: relative;
+    }
+    
+    input {
+        width: 120px;
+        height: 20px;
+        margin-right: 10px;
+        color: #b9b9b9;
+        padding-left: 5px;
+        /* modify the text indent in the input box */
+        text-indent: 5px;
+        font-size: 14px;
+        /* outline: red; */
+    }
+    
+    .new {
+        outline: none;
+        border: 1px solid red;
+    }
+    
+    .button {
+        display: inline-block;
+        background-color: lightskyblue;
+        width: 60px;
+        padding: 0 5px;
+        /* make the text in the center position of the horizontal */
+        text-align: center;
+        color: white;
+        font-size: 16px;
+        height: 25px;
+        position: absolute;
+        /* top: -1px; */
+    }
+    
+    .pwd {
+        margin-right: 15px;
+    }
+</style>
+
+<body>
+    <!--function:仿照制作世纪佳园首页的登录功能区-->
+    <div class="box">
+        <input type="text" value="邮箱/ID/手机号" class='text input'>
+        <input type="text" class='pwd input' value="密码">
+        <div class="button">登录</div>
+
+    </div>
+    <script>
+        const text = document.querySelector('.text')
+        const pwd = document.querySelector('.pwd')
+        const inputs = document.querySelectorAll('input')
+            // inputs.onfocus = function() {
+            //         this.className = 'new input'
+            //     }
+            // 鼠标聚焦输入框时如果时如果是默认值则清空输入框,
+        pwd.onfocus = function() {
+            if (this.value == '密码') {
+                // 这里设置值为空将影响脱焦时的程序
+                this.value = ''
+                this.type = 'password'
+                    // 添加红色边框类名
+                this.className = 'input new pwd'
+            }
+        }
+        text.onfocus = function() {
+                if (this.value == '邮箱/ID/手机号') {
+                    this.value = ''
+                        // 添加红色吧边框类名
+                    this.className = 'input text new'
+                }
+            }
+            // 脱离焦点时如果为空，则显示默认值
+        pwd.onblur = function() {
+            // 去掉红色边框类名
+            this.className = 'input pwd'
+                // 鼠标脱焦时判断输入框的值是否空
+            if (this.value === '') {
+                this.value = '密码'
+                this.type = 'text'
+                    // 判断时必须用全等！！！
+            } else if (this.value === '密码') {
+                this.type = 'text'
+            } else {
+                this.type = 'password'
+            }
+        }
+        text.onblur = function() {
+            // 去掉红色边框类名
+            this.className = 'input text'
+            if (this.value === '') {
+                this.value = '邮箱/ID/手机号'
+            }
+        }
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

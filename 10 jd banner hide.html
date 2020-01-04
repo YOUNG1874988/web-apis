@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            padding: 20px 20px;
+        }
+        
+        #box {
+            position: relative;
+            background-image: url("https://img13.360buyimg.com/babel/jfs/t1/110163/22/1632/86891/5e00223aE56540e46/e13edb4f71bfa025.jpg!cc_990x80!q70.jpg");
+            height: 400px;
+        }
+        
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper"> <span>close</span>
+        <div id="box"></div>
+    </div>
+    <script>
+        const close = document.querySelector('span')
+        const banner = document.getElementById('box')
+        close.onclick = function() {
+            // 这里的css属性必须写在单引号之内
+            banner.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

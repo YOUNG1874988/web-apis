@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li>dfdfdfdf</li>
+        </ul>
+    </div>
+
+    <script>
+        const ul = document.querySelector('ul')
+            // 第一个和最后一个子节点
+        console.log(ul.firstChild)
+        console.log(ul.lastChild)
+            // 第一个子元素节点，有兼容性要求
+        console.log(ul.firstElementChild)
+            // 最后一个子元素节点,有兼容性要求
+        console.log(ul.lastElementChild)
+
+        // 实际开发写法，既可
+        以得到第一个子元素节点又都兼容
+        console.log(ul.children[0])
+            // 最后一个子元素节点
+        console.log(ul.children[ul.children.length - 1])
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

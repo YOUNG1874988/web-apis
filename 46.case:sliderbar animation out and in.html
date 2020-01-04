@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./47.animation.js"></script>
+    <style>
+        .box {
+            position: absolute;
+            right: 0px;
+            top: 200px;
+        }
+        
+        .sliderbar {
+            margin-top: 200px;
+            margin-left: 1200px;
+            /* width: 15px; */
+            /* overflow: hidden; */
+            position: relative;
+        }
+        
+        .sliderbar span {
+            background-color: orange;
+            /* width: 200px; */
+            /* height: 100px; */
+        }
+        
+        .con {
+            /* width: 64px; */
+            /* 把要滑动的盒子定位到大盒子最左边 */
+            position: absolute;
+            left: 0;
+            z-index: -4;
+            display: inline-block;
+            background-color: green;
+            /* display: flex; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="sliderbar">
+            <span>←</span>
+            <div class="con">问题反馈</div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <script>
+        var sliderbar = document.querySelector('.sliderbar')
+        var con = document.querySelector('.con')
+        var arrow = document.querySelector('span')
+        console.log(con.clientWidth)
+        arrow.addEventListener('mouseenter', function() {
+            animation(con, -64, function() {
+                arrow.innerHTML = '→'
+            })
+        })
+        arrow.addEventListener('mouseout', function() {
+            animation(con, 0, function() {
+                arrow.innerHTML = '←'
+            })
+        })
+    </script>
+</body>
+
+</html>

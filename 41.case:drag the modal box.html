@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p {
+            width: 200px;
+            font-size: 20px;
+            /* 让该盒子水平居中 */
+            position: absolute;
+            left: 50%;
+            margin-left: -100px;
+        }
+        /*         
+        body {
+            /* background-color: orange; */
+        /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        /* 如何解决点击登录框弹出后的背景变为灰色？ */
+        /* 登录框弹出的同时在js中改变body的背景色 */
+        
+        .enterbox {
+            display: none;
+            width: 400px;
+            height: 200px;
+            background-color: #FDFFFC;
+            /* position: absolute; */
+            /* 1.这里的绝对定位设置会影响到后面到拖拽跟随，故将其位置注释掉 */
+            /* left: 50%;
+            top: 50%;
+            margin-left: -200px;
+            margin-top: -100px; */
+            /* 2.这种水平垂直居中的方式对后面对拖拽不会产生影响，故使用这种 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* 这里的transform原理和使用margin-left:-宽度一半是一样的 */
+            /* transform用来对元素进行各种方位对位置变换 */
+            transform: translate(-50%, -50%);
+        }
+        
+        .title {
+            text-align: center;
+        }
+        
+        input {
+            width: 250px;
+            height: 25px;
+            margin-left: 2px;
+            /* top: -50px; */
+        }
+        
+        .username {
+            top: 50px;
+            text-indent: -70px;
+            font-size: 14px;
+        }
+        
+        .password {
+            top: 100px;
+            font-size: 14px;
+            text-indent: -84px;
+        }
+        
+        .usernameinput {
+            position: relative;
+        }
+        
+        .usernameinput input {
+            position: absolute;
+            top: 60px;
+            left: 80px;
+        }
+        
+        .password {
+            position: relative;
+        }
+        
+        .password input {
+            position: absolute;
+            left: 80px;
+            bottom: 7px;
+        }
+        
+        .submit {
+            position: absolute;
+            bottom: -5px;
+            text-align: center;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            padding: 5px 0;
+        }
+        
+        .close {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            border-radius: 50%;
+            background-color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="initialbutton">点击，弹出登录框</p>
+    <div class="enterbox">
+        <p class="title">登录会员</p>
+        <p class="username">用户名:
+            <div class="usernameinput">
+                <input type="text" placeholder="请输入用户名"></p>
+        </div>
+        <p class="password">登录密码:
+            <div class="password">
+                <input type="password" placeholder="请输入登录密码"></p>
+        </div>
+        <p class="submit">登录会员</p>
+
+        <div class="close">关闭</div>
+
+    </div>
+    <script>
+        var enterbox = document.querySelector('.enterbox')
+        var close = document.querySelector('.close')
+        var showenter = document.querySelector('.initialbutton')
+        close.addEventListener('click', function() {
+            enterbox.style.display = 'none'
+            document.body.style.backgroundColor = 'white'
+        })
+        showenter.addEventListener('click', function() {
+                enterbox.style.display = 'block'
+                document.body.style.backgroundColor = "#ccc"
+            })
+            // enterbox.addEventListener('mousedown', function(e) {
+            //     // 鼠标相对于页面的距离减去登录盒子的边距就是鼠标相对于登录盒子的位置
+            //     var x = e.pageX - this.offsetLeft
+            //     console.log(x)
+            // })
+        enterbox.addEventListener('mousedown', function(e) {
+            // 1.当鼠标按下时获得鼠标在盒子内的坐标（鼠标相对于页面的坐标减去盒子相对于页面的坐标值）
+            var x = e.pageX - enterbox.offsetLeft
+            var y = e.pageY - enterbox.offsetTop
+                // 鼠标在页面文档任何位置都可以按下移动
+
+            //2. 鼠标在移动时相对于页面的坐标减去x,y就是盒子的坐标值
+
+            document.addEventListener('mousemove', move)
+
+            function move(e) {
+                console.log('hellojun')
+                enterbox.style.left = e.pageX - x + 'px'
+                enterbox.style.top = e.pageY - y + 'px'
+            }
+            //3.当鼠标弹起的时候移除移动事件
+
+            document.addEventListener('mouseup', function() {
+                document.removeEventListener('mousemove', move)
+            })
+
+
+        })
+    </script>
+
+
+
+</body>
+
+</html>

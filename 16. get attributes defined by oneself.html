@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 所有的自定义属性前都必须发加data- -->
+    <div data-time="16" data-place="baoji" data-where-city="newyork">
+
+
+
+    </div>
+    <script>
+        // 使用dataset可以获取所有的自定义属性
+        const alldataattrubutes = document.querySelector('div').dataset
+        console.log(alldataattrubutes)
+        console.log(alldataattrubutes.time)
+        console.log(alldataattrubutes.place)
+            // 自定义属性名采用驼峰命名法来获取
+        console.log(alldataattrubutes.whereCity)
+    </script>
+</body>
+
+</html>

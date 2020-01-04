@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color:orange;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+
+<script>
+    const box = document.querySelector('div')
+    box.onclick = function () {
+        //注意：1.在这里操作改变元素的css时要采用驼峰命名法
+        //2.在这里写入的样式为行内样式，权重比head中的要高，因此这里的样式会覆盖其他的
+        this.style.backgroundColor = 'green'
+        this.style.width = '400px'
+        this.style.height = '400px'
+    }
+</script>
+
+
+
+
+
+
+</body>
+</html>

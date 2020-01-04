@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            margin: 200px 0 0 200px;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <button>hello</button>
+    <script>
+        var btn = document.querySelector('button')
+        btn.addEventListener('click', function() {
+            // 1. location.assign方法记录浏览器历史， 可以后退
+            location.assign('https://www.grapecity.com.cn/career/challenge')
+                // 2.location.replace没有后退功能
+                // location.replace('https://www.grapecity.com.cn/career/challenge')
+                // 3.reload重新发加载,参数为true则强制刷新
+                // location.reload(true)
+        })
+        btn.addEventListener('click', function() {
+            // 前进
+            // history.forward()
+            // 后退
+            history.back()
+                // 前进几步
+            history.go(1)
+        })
+        console.log(btn.offsetTop)
+        console.log(btn.offsetLeft)
+        console.log(btn.offsetParent)
+            // 返回元素除了margin之外的高和宽
+        console.log(btn.offsetHeight)
+        console.log(btn.offsetWidth)
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    input{
+        color: #999;
+    }
+</style>
+<body>
+<div><input type="text" value="phone">
+</div>
+<script>
+// <!--    功能：1.如果输入表单中的值为'phone'，聚焦输入表单后
+// 清空表单-->
+    const text = document.querySelector('input')
+    text.onfocus = function () {
+        //聚焦时输入文字颜色更黑
+        this.style.color = '#333'
+        console.log('focus getted!');
+        if(this.value === 'phone'){
+            this.value = ''
+        }
+    }
+//2.在失去焦点时，如果表单值为空，则还原值为'phone'，否则不做改动
+    text.onblur = function(){
+        //失去焦点时文字颜色变浅
+        this.style.color = '#999'
+        if(this.value === ''){
+            this.value = 'phone'
+        }
+    }
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            /* width: 600px; */
+            height: 400px;
+            background-color: orange;
+        }
+        
+        .tab_list {
+            width: 100%;
+            height: 40px;
+            background-color: #F1F3F1;
+        }
+        
+        .tab_list ul {
+            display: flex;
+            justify-content: space-between;
+            height: 40px;
+            padding-left: 0;
+        }
+        
+        .tab_list li {
+            list-style: none;
+            display: inline-block;
+            height: 40px;
+            width: 120px;
+            line-height: 40px;
+            text-align: 40px;
+            text-indent: 25px;
+            /* 让文字在一行显示不换行 */
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        
+        .tab_list .comment {
+            width: 170px;
+        }
+        /* 将当前的栏目背景设置为红色 */
+        
+        li.current {
+            background-color: #B8362C;
+        }
+        /* 默认所有内容都不显示 */
+        
+        .tab_content .tab_item {
+            display: none;
+        }
+        /* 第一个内容是默认显示的 */
+        
+        .tab_item.firstcontent {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li class="comment">商品评价（50000）</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_content">
+            <div class="tab_item firstcontent" index=0>商品介绍模块内容</div>
+            <div class="tab_item" index=1>规格与包装模块内容</div>
+            <div class="tab_item" index=2>售后保障模块内容</div>
+            <div class="tab_item" index=3>商品评价模块内容</div>
+            <div class="tab_item" index=4>手机社区模块内容</div>
+        </div>
+    </div>
+    <script>
+        //1.获取所有li元素
+        const tabs = document.getElementsByTagName('li')
+        console.log(tabs)
+        const tab_contents = document.getElementsByClassName('tab_item')
+        console.log(tab_contents)
+            // 2.遍历所有li,点击某个时干掉所有人，留下我自己
+        for (let i = 0; i < tabs.length; i++) {
+            tabs[i].onclick = function() {
+                // 3.点击某个tab时，先将所有tab背景重置为默认,并把所有的内容区域清空
+                for (let j = 0; j < tabs.length; j++) {
+                    tabs[j].style.backgroundColor = '#F1F3F1'
+                }
+                // 在每一次点击一个tab的时候，就遍历所有的内容，通过比对i和index是否相等，来判断属于自身的内容是哪一个
+                for (let m = 0; m < tab_contents.length; m++) {
+                    // 3.2 将所有内容的显示改为none
+                    tab_contents[m].style.display = 'none'
+                        // 遍历所有的内容盒，并检查它们的index属性，如果和tab的index一致
+                        // 则可以确定是对应的内容，将其显示属性改为块盒；
+
+                    if (i == tab_contents[m].getAttribute('index')) {
+                        tab_contents[m].style.display = 'block'
+                    }
+
+                }
+
+
+                //4. 再将当前被点击的tab背景色设置为当前应该的背景色
+                tabs[i].style.backgroundColor = '#B8362C'
+
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

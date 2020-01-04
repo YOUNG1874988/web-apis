@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            /* 这种设置可以让背景图自然填满整个盒子 */
+            background-image: url(./bgc1.jpeg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+        /* 解决高度坍塌问题 */
+        /* body:after {
+            content: "";
+            height: 0;
+            clear: both;
+            overflow: hidden;
+            display: block;
+            visibility: hidden;
+            
+        }
+         */
+        
+        .box {
+            /* margin: auto; */
+            /* 利用50%定位，再讲左margin设置为负的一半宽度可以将该盒子水平居中 */
+            position: absolute;
+            left: 50%;
+            margin-left: -200px;
+            /* overflow: hidden; */
+        }
+        
+        img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- function:click the one image in these fours images to change the page background image -->
+    <div class="box">
+        <!-- 要注意图片的名字格式，从网站直接下载自动命名的名字可能存在问题 -->
+        <img src="./bgc1.jpeg" alt="">
+        <img src="./bgc4.jpeg" alt="">
+        <img src="./bgc3.jpeg" alt="">
+        <img src="./bgc2.jpeg" alt="">
+
+        <!-- -->
+
+
+    </div>
+    <script>
+        const images = document.querySelectorAll('img')
+            // const page = document.body
+            // 遍历每张图片
+
+        for (var i = 0; i < images.length; i++) {
+            images[i].onclick = function() {
+
+                // page.style.backgroundImage = ''
+                console.log(this.src)
+
+                document.body.style.backgroundImage = 'url(' + this.src + ')';
+
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

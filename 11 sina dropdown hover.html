@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            width: 100px;
+            /* background-color: orange; */
+        }
+        
+        .webbo {
+            /* position: relative; */
+            /* padding: 0 20px; */
+            /* background-color: red; */
+        }
+        
+        span,
+        p {
+            display: inline-block;
+            text-align: center;
+            /* position: absolute; */
+            /* left: 50pßx; */
+            text-indent: 30px;
+            /* background-color: #282828; */
+            /* color: white; */
+        }
+        
+        span {
+            margin-left: -30px;
+            position: absolute;
+            top: 25px;
+            left: 75px;
+            z-index: -2;
+        }
+        
+        ul {
+            border: 2px solid orange;
+            border-top: none;
+            margin: 0 0;
+        }
+        
+        li {
+            /* clear the dot before li */
+            list-style: none;
+            margin-left: -40px;
+            border-bottom: 1px solid orange;
+            text-indent: 30px;
+            /* border: 2px solid orange; */
+        }
+        
+        .dropdown {
+            display: none;
+        }
+        
+        .dropdown .lastli {
+            border-bottom: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- function:鼠标移动到该盒子上时显示下拉菜单 -->
+    <div class="wrapper">
+        <div class="weibo" id="weibo">
+            <p>微博</p>
+            <span>></span>
+        </div>
+        <div class="dropdown" id="dropdown">
+            <ul>
+                <li>私信</li>
+                <li>评论</li>
+                <li class="lastli">@我</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        const weibo = document.getElementById('weibo')
+        const dropdown = document.getElementById('dropdown')
+        weibo.onmouseover = function() {
+            dropdown.style.display = 'block'
+            console.log('mouse is moving')
+        }
+        weibo.onmouseout = function() {
+            dropdown.style.display = 'none'
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>

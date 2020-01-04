@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+        }
+        
+        .page_box {
+            height: 400px;
+        }
+        
+        .page_item {
+            width: 80px;
+            background-color: #1C1C1C;
+        }
+        
+        .page_item:hover {
+            background-color: #282828;
+        }
+        
+        a {
+            text-decoration: none;
+            background-color: #1C1C1C;
+            /* margin-left: 25px; */
+            margin-top: 20px;
+            font-size: 14px;
+            color: #BFBFBF;
+            height: 100px;
+        }
+        /* a:hover {
+            background-color: #282828;
+        } */
+        
+        .title {
+            height: 30px;
+            padding-top: 15px;
+            margin-left: 25px;
+        }
+        /* .title:hover {
+            background-color: #282828;
+        } */
+        
+        .content {
+            display: none;
+            border: 1px solid orange;
+            border-top: none;
+        }
+        
+        .content li {
+            height: 30px;
+            border-bottom: 1px solid orange;
+        }
+        
+        .page_box {
+            display: flex;
+        }
+        
+        .page_item ul {
+            padding-left: 0;
+            color: #BFBFBF;
+            font-size: 12px;
+        }
+        
+        .page_item li {
+            text-align: center;
+        }
+        
+        .arrow {
+            color: orange;
+        }
+        /* .arrow:hover {
+            background-color: #282828;
+        } */
+        /* 盒子的背景色是铺在内容盒上的 */
+    </style>
+</head>
+
+<body>
+    <!-- function: copy the nav bar of sina home page-->
+    <div class="box">
+        <ul class="page_box">
+            <li class="page_item">
+                <div class="title">
+                    <a href="">微博 </a>
+                    <a href="" class="arrow">></a>
+
+                </div>
+                <ul class="content" data-index=0>
+                    <li>私信</li>
+                    <li>评论</li>
+                    <li>@我</li>
+                </ul>
+            </li>
+            <li class="page_item">
+                <div class="title">
+                    <a href="">博客</a>
+                    <a href="" class="arrow">></a>
+
+                </div>
+                <ul class="content" data-index=1>
+                    <li>博客评论</li>
+                    <li>未读提醒</li>
+                </ul>
+            </li>
+            <li class="page_item">
+                <div class="title">
+                    <a href="">邮箱</a>
+                    <a href="" class="arrow">></a>
+
+                </div>
+                <ul class="content" data-index=2>
+                    <li>免费邮箱</li>
+                    <li>VIP邮箱</li>
+                    <li>企业邮箱</li>
+                    <li>新浪邮箱客户端</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        // function:change the title boxs' background color
+        // when mouse pointer is hover on it
+
+        // 1.get the all the content boxes in the title boxes
+        const as = document.getElementsByTagName('a')
+        console.log(as)
+            // 2.get all the title boxes
+        const titles = document.getElementsByClassName('title')
+        console.log(titles)
+        const page_items = document.getElementsByClassName('page_item')
+        console.log(page_items)
+        const contents = document.getElementsByClassName('content')
+        for (let i = 0; i < titles.length; i++) {
+            // titles[i].onmouseover = function() {
+            //         // 鼠标经过时不显示所有内容盒
+            //         // 写法1:
+            //         for (let j = 0; j < contents.length; j++) {
+            //             contents[j].style.display = 'none'
+            //         }
+            //         // 只显示当前内容盒
+            //         contents[i].style.display = 'block'
+            //             // as[i].style.backgroundColor = 'orange'
+            //             //     as[i + 1].style.backgroundColor = 'orange'
+            //             // titles[i].style.backgroundColor = 'orange'
+            //             // page_items[i].style.backgroundColor = 'orange'
+
+            //     }
+            //     // 鼠标离开时所有的都不显示
+            // titles[i].onmouseout = function() {
+            //         for (let j = 0; j < contents.length; j++) {
+            //             contents[j].style.display = 'none'
+            //         }
+
+            //     }
+            // 写法2:操作元素节点的隐藏和显示
+            page_items[i].onmouseover = function() {
+                this.children[1].style.display = 'block'
+            }
+            page_items[i].onmouseout = function() {
+                this.children[1].style.display = 'none'
+            }
+        }
+    </script>
+</body>
+
+</html>

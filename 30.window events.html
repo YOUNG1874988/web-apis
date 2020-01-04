@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 当页面全部加载完成时执行该方法
+        // 1.这种写法只执行一次且以最后一次为准
+        // window.onload = function() {
+        //         const btn = document.querySelector('button')
+
+        //         btn.onclick = function() {
+        //             alert('hello young!!!')
+        //         }
+
+        //     }
+        // 2.这种写法可以执行多次且每一次都有效
+        window.addEventListener('load', function() {
+            const btn = document.querySelector('button')
+
+            btn.onclick = function() {
+                alert('hello young!!!')
+            }
+
+        })
+        window.addEventListener('load', function() {
+            const fdfd = document.querySelector('button')
+            fdfd.onclick = function() {
+                alert('wang')
+            }
+        })
+    </script>
+
+
+    <button>here are you</button>
+
+</body>
+
+</html>

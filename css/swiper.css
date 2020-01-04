@@ -1,0 +1,78 @@
+/* 让轮播图的所有图片都浮动起来 */
+
+.focus {
+    position: relative;
+    width: 730px;
+    height: 453px;
+    overflow: hidden;
+}
+
+.focus ul {
+    /* 必须给装这4个轮播图的盒子设置绝对定位才能使用动画函数 */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.focus ul li {
+    float: left;
+}
+
+
+/* 让轮播图的图片的父盒子有足够的宽度，才能让所有的图片在一行浮动显示 */
+
+.focus ul {
+    width: 500%;
+}
+
+.arrow-l,
+.arrow-r {
+    /* 默认不显示，当鼠标移动上去时才显示 */
+    display: none;
+    width: 25px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    /* text-indent: 5px; */
+    font-size: 20px;
+    color: white;
+    /* 设置背景颜色及其透明度 */
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.arrow-l {
+    position: absolute;
+    left: 0;
+    top: 200px;
+    z-index: 99;
+}
+
+.arrow-r {
+    position: absolute;
+    right: 0;
+    top: 200px;
+    z-index: 99;
+}
+
+.circle {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    z-index: 99;
+}
+
+.circle li {
+    float: left;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, .0);
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 3px solid lightgreen;
+    /* position: absolute; */
+    /* z-index: 20; */
+}
+
+.circle .current {
+    background-color: lightgreen;
+}

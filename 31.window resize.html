@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        const box = document.querySelector('div')
+
+        // resize:当浏览器窗口发生变化时会触发该事件
+        window.addEventListener('resize', function() {
+                if (window.innerWidth <= 800) {
+                    box.style.display = 'none'
+                } else {
+                    box.style.display = 'block'
+                }
+                console.log(window.innerWidth)
+
+
+                console.log('the window size is changing now!')
+            })
+            // innerWidth:当前浏览器窗口当宽度，可以用这个来进行响应式布局
+    </script>
+</body>
+
+</html>

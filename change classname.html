@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+    div{
+        background-color: orange;
+        width: 200px;
+        height: 200px;
+    }
+    .box{
+        background-color: green;
+        width: 400px;
+        height: 400px;
+    }
+</style>
+<body>
+<div>
+</div>
+<script>
+    const box = document.querySelector('div')
+    box.onclick = function () {
+        //用户className可以修改类名
+        this.className = 'box'
+
+    }
+</script>
+</body>
+</html>

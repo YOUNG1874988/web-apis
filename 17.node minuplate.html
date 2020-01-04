@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li>fdfdfd</li>
+        </ul>
+
+
+    </div>
+    <script>
+        const ul = document.querySelector('ul')
+
+        console.log(ul.parentNode)
+        console.log(ul.parentNode.nodeType)
+
+
+
+        // 通过childNodes可以获取所有的子节点
+        console.log(ul.childNodes[0].nodeType)
+
+
+
+
+        // 通过children可以获取所有的子元素节点
+        console.log(ul.children[0].nodeType)
+            // 拿到最后一个子元素节点
+        console.log(ul.children[ul.children.length - 1])
+    </script>
+
+
+
+</body>
+
+</html>

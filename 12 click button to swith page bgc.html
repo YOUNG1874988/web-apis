@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            /* background-color: black; */
+        }
+    </style>
+</head>
+
+<body>
+    <button>toggle light</button>
+</body>
+<script>
+    const body = document.querySelector('body')
+    const btn = document.querySelector('button')
+        // 注意：要在点击事件外部定义flag变量
+    let flag = 1
+    btn.onclick = function() {
+        if (flag) {
+            body.style.backgroundColor = 'black'
+            flag = !flag
+        } else {
+            body.style.backgroundColor = 'white'
+            flag = !flag
+        }
+    }
+</script>
+
+</html>

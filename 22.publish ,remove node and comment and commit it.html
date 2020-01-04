@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input {
+            width: 400px;
+            height: 200px;
+            border: 2px solid orange;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        button {
+            position: absolute;
+            top: 165px;
+            left: 420px;
+            width: 100px;
+            height: 50px;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        .published {
+            background-color: orange;
+            width: 400px;
+            height: 400px;
+        }
+        
+        .published p {
+            background-color: green;
+        }
+        
+        .published p a {
+            margin-left: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <input type="text"> -->
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>publish</button>
+    <div class="published"></div>
+</body>
+<script>
+    const btn = document.querySelector('button')
+        // const input = document.querySelector('input')
+    const input = document.querySelector('textarea')
+        // 使用类名获取到到是一个伪数组，需要将其中到第一个对象拿出来后面才可以正常使用
+    const published = document.getElementsByClassName('published')[0]
+    btn.onclick = function() {
+        // 每点击一下按钮就检查输入框的值是否为空，为空不做任何操作；
+        // 不为空的话将输入框的值添加到新创建的节点中，并把该节点添加到评论区中
+        if (input.value == '') {
+            alert('please input your comment')
+        } else {
+            // 1.创建新节点
+            console.log('button is been clicked!')
+            const newcomment = document.createElement('p')
+                // 3.将新节点添加到评论区第一个元素节点位置
+            published.insertBefore(newcomment, published.children[0])
+                // published.appendChild(newcomment)
+                // 2.将输入框的值添加到新节点中
+                // 2.1 添加删除按钮
+            newcomment.innerHTML = input.value + '<a>delete</a>'
+                // 注意这里的点击删除事件必须写在提价按钮的else中，否则点击删除无法生效
+                // 拿到所有的a标签,并为每一个a标签添加点击事件，点击后删除其父节点
+            const deletebtns = document.querySelectorAll('a')
+            console.log(deletebtns)
+            for (let j = 0; j < deletebtns.length; j++) {
+                deletebtns[j].onclick = function() {
+                    published.removeChild(this.parentNode)
+                    console.log('hello young!')
+                }
+            }
+
+
+
+
+
+        }
+    }
+</script>
+
+</html>

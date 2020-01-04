@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>click here</button>
+<input type="text" value="input your content">
+<script>
+    const btn = document.querySelector('button')
+    const input = document.querySelector('input')
+    btn.onclick=function () {
+            //对表单元素进行dom操作有专门对属性，不使用innerText或者innerHtml
+            input.value='hello young!'
+        btn.disabled = true
+        //通过this 来调用当前事件发生在那个元素上
+        // this.disabled = true
+    }
+</script>
+</body>
+</html>

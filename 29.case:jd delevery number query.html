@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .search {
+            margin: 100px;
+            position: relative;
+            width: 178px;
+        }
+        
+        .con {
+            display: none;
+            position: absolute;
+            top: -60px;
+            border: 1px solid rgba(0, 0, 0, .2);
+            /* box-shadow的值依次为：横向偏移量，纵向偏移量，阴影尖锐程度，颜色以及透明度 */
+            box-shadow: 0 4px 4px rgba(0, 0, 0, .2);
+            width: 350px;
+            height: 50px;
+            line-height: 50px;
+            color: #333;
+            border-radius: 8px;
+        }
+        
+        .newcon {
+            font-size: 24px;
+            display: block;
+            color: orange;
+        }
+        /* 小三角的做法 */
+        
+        .con::before {
+            content: '';
+            width: 0;
+            height: 0;
+            /* background-color: black; */
+            position: absolute;
+            top: 49px;
+            left: 28px;
+            border: 8px solid #000;
+            border-style: solid dashed dashed;
+            border-color: #fff transparent transparent;
+        }
+        
+        input {
+            width: 300px;
+            height: 25px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            outline: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        <div class="con"></div>
+        <input type="text" placeholder="please input your delevery number">
+    </div>
+    <script>
+        const con = document.querySelector('.con')
+        const jd_search = document.querySelector('input')
+        jd_search.addEventListener('keyup', function() {
+                console.log('hello')
+                    //  一旦搜索框输入内容，就把输入的内容给内容框
+                con.innerText = this.value
+                con.className = 'newcon con'
+                    // 当把输入框当内容删除干净后不显示大框
+                if (this.value == '') {
+                    con.style.display = 'none'
+                } else {
+                    con.style.display = 'block'
+                }
+
+
+            })
+            // 输入框失去焦点时大框隐藏，获得焦点时大框显示
+        jd_search.addEventListener('blur', function() {
+                con.style.display = 'none'
+            })
+            //  输入框聚焦时如果值为空则不显示；如果不为空则显示
+        jd_search.addEventListener('focus', function() {
+            if (this.value == '') {
+                con.style.display = 'none'
+            } else {
+                con.style.display = 'block'
+
+            }
+        })
+        console.dir(window)
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 引入公共和基础样式 -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/swiper.css">
+    <!-- 引入动画函数js ；必须在轮播图js之前引入，因为后者是依赖前者的-->
+    <script src="../js/47.animation.js"></script>
+    <!-- 引入轮播图js -->
+    <script src="../js/swiper.js"></script>
+</head>
+
+<body>
+    <div class="w">
+        <div class="main">
+            <div class="focus ">
+                <!-- 左侧按钮 -->
+                <a href="#" class="arrow-l">
+                    &lt;
+                </a>
+                <!-- 右侧按钮 -->
+                <a href="#" class="arrow-r">
+                    &gt;
+                </a>
+                <!-- 核心的滚动图片区域 -->
+                <ul>
+                    <li>
+                        <a href="#"><img src="../imgs/banner1.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../imgs/banner2.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../imgs/banner3.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../imgs/banner4.jpg" alt=""></a>
+                    </li>
+                    <!-- 为了实现无缝滚动，最后一张后面要加上第一张图片 -->
+
+                    <li>
+                        <a href="#"><img src="../imgs/banner1.jpg" alt=""></a>
+                    </li>
+
+                </ul>
+                <!-- 小圆点 -->
+                <ol class="circle">
+
+
+
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    li{
+        float: left;
+        width: 250px;
+        height: 250px;
+        background-color: orange;
+        list-style: none;
+        display: inline-block;
+        /*给该元素设置背景图片*/
+        background-image: url("./red-square-monster-s-emotions-sprite-sheets-set-monsters-different-59729055.jpg");
+    /*    设置该元素的背景图片的具体位置，这2个值分别为横坐标和纵坐标
+    这里的值表示背景图片的左边框和上边框 距离 盒子 的左边框 和上边框的位置，可以为负数*/
+        background-position:-130px -130px;
+    }
+    ul{
+        /*float: left;*/
+        /*width: 400px;*/
+    }
+</style>
+<body>
+<div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+    </ul>
+</div>
+<script>
+    const lis = document.querySelectorAll('li')
+    //如何实现li元素的背景图遍历精灵图中的各个精灵作为自己的背景图：
+    //1.遍历每个li元素
+    //2.在遍历li时，每个单个循环到达每个独立li里面时，根据索引值改变该li 的背景位置距离
+    //由于背景图为9宫格形式比较特殊，需要分别遍历每一行的背景图
+
+
+    //前3个li显示的该精灵图左一列的3个图片
+    for(let i = 0;i <= 2;i++) {
+        //index 为背景的纵坐标
+        var index =  130 + i * 400
+        lis[i].style.backgroundPosition = '-130px -'+ index +'px'
+    }
+// // //第4-6个li
+//     for (let i = 3;i <= 6;i++){
+//         lis[i].style.backgroundPosition = 160px (80 * )
+//     }
+//
+
+</script>
+
+
+</body>
+</html>

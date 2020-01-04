@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>熊大</li>
+        <li>熊二</li>
+        <li>光头强</li>
+    </ul>
+    <button>hello</button>
+    <script>
+        // 1.获取元素
+        var ul = document.querySelector('ul')
+        var btn = document.querySelector('button')
+            // 2.删除第一个子元素
+            // ul.removeChild(ul.children[0])
+            // 点击按钮依次删除中的第一个子元素
+
+        btn.onclick = function() {
+            // 每次点击按钮时先检查ul的子元素节点长度是否为0，
+            // 如果为0，则禁用该节点；如果不为0，则移除其第一个子元素
+            if (ul.children.length == 0) {
+                btn.disabled = true
+            } else {
+                ul.removeChild(ul.children[0])
+            }
+
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>

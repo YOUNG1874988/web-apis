@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>
+        start
+    </button>
+    <button class="stop">
+        stop
+    </button>
+    <script>
+        const start = document.querySelector('button')
+        const stop = document.querySelector('.stop')
+            // 要先把timer定义为全局变量，在停止函数中才能访问它
+        var timer = null
+            //点击start按钮开启计时器
+        start.addEventListener('click', function() {
+            timer = setInterval(function() {
+                console.log('how are you??')
+            }, 1000)
+        })
+        stop.addEventListener('click', function() {
+            // 停止定时器
+            clearInterval(timer)
+        })
+    </script>
+</body>
+
+</html>

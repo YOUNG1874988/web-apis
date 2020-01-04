@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            position: relative;
+            width:318px;
+            display: block;
+        }
+        i{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>淘宝二维码</h2>
+    <img src="http://img0.imgtn.bdimg.com/it/u=1125791561,1670439433&fm=26&gp=0.jpg" alt="">
+    <i>关闭</i>
+</div>
+<script>
+    const qrcode = document.querySelector('div')
+    const btn = document.querySelector('i')
+    btn.onclick = function () {
+        //不能用this,否则点击整个盒子会隐藏
+        // this.style.display = 'none'
+            qrcode.style.display = 'none'
+    }
+</script>
+</body>
+</html>

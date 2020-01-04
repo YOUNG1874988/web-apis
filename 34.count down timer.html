@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 100px 0 0 100px;
+        }
+        
+        span {
+            display: block;
+            width: 50px;
+            height: 50px;
+            margin: 0 20px;
+            background-color: green;
+            /* text-indent: 10px; */
+            text-align: center;
+            line-height: 50px;
+            float: left;
+            font-size: 18px;
+            /* padding: 0 40px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="day">1</span>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        // 1.get elements
+        const day = document.querySelector('.day')
+        const hour = document.querySelector('.hour')
+        const minute = document.querySelector('.minute')
+        const second = document.querySelector('.second')
+            // const date = Date()
+            // console.log(date)
+            // +new Date():当前时间总的毫秒数
+            // console.log(+new Date())
+            // 定义用户输入的截止时间
+        const time = '2020-2-1 19:00:00'
+            // 1.页面刚加载完成时要调用一次，否则会有短暂空白期
+        countDown()
+            // 2.开启定时器，每隔一秒更新一次时间
+            // 注意：这里不需要传参，直接调用函数名即可；在函数中直接使用全局变量即可
+        setInterval(countDown, 1000)
+
+        function countDown() {
+            console.log('hello jun')
+                // +new Date():返回当前时间的总毫秒数
+            var time0 = +new Date();
+            // 用户输入时间的总毫秒数
+            var time1 = +new Date(time);
+            // 剩余时间的总毫秒数
+            var time3 = time1 - time0;
+            //剩余时间的总秒数
+            time3 = time3 / 1000;
+            // 剩余时间有多少天
+            var d = parseInt(time3 / 60 / 60 / 24);
+            // 求对应单位的时间时先把时间数字转换为相同的单位再求余数即可求出最后一天剩余多少时间
+            //剩余时间的最后一天有多少小时
+            var h = parseInt(time3 / 60 / 60 % 24);
+            // 剩余时间最后一天有多少分钟
+            var m = parseInt(time3 / 60 % 60);
+            // 剩余时间最后一天有多少秒
+            var s = parseInt(time3 % 60);
+            d = d < 10 ? '0' + d : d;
+            day.innerHTML = d
+                //  把求出的时，分，秒给到对应的盒子中
+            h = h < 10 ? '0' + h : h;
+            hour.innerHTML = h;
+            m = m < 10 ? '0' + m : m;
+            minute.innerHTML = m;
+            s = s < 10 ? '0' + s : s;
+            second.innerHTML = s;
+            // return d + 'days' + h + ':' + m + ':' + s;
+        }
+    </script>
+
+
+
+</body>
+
+</html>
