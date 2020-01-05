@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 导入animation.js -->
+    <script src="./js/47.animation.js"></script>
+    <style>
+        .c-nav {
+            position: relative;
+            height: 100px;
+        }
+        
+        .cloud {
+            /* line-height: 100px; */
+            width: 30px;
+            position: absolute;
+            top: 30px;
+        }
+        
+        .cloud img {
+            width: 30px;
+        }
+        
+        li {
+            list-style: none;
+            float: left;
+            padding-right: 20px;
+        }
+        
+        ul {
+            display: inline-block;
+            position: absolute;
+            top: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c-nav">
+        <span class="cloud"><img src="./imgs/cloud.jpeg" alt=""></span>
+        <ul>
+            <li class="current"><a href="">首页新闻</a></li>
+            <li><a href="#">师资力量</a></li>
+            <li><a href="#">活动策划</a></li>
+            <li><a href="#">企业文化</a></li>
+            <li><a href="#">招聘信息</a></li>
+            <li><a href="#">公司简介</a></li>
+            <li><a href="#">我是佩奇</a></li>
+            <li><a href="#">啥是佩奇</a></li>
+        </ul>
+
+    </div>
+    <script>
+        // function:鼠标移动到哪个小li上面，云朵跳转到哪个小li上
+        window.addEventListener('load', function() {
+            // 1.获取元素
+            var cloud = document.querySelector('.cloud')
+            var ul = document.querySelector('ul')
+            var lis = ul.querySelectorAll('li')
+            console.log(lis)
+                // current用来存储云朵的初始位置
+            var current = 0
+                // 2.给每个小li 注册mouseover事件，事件为移动云朵到当前小li
+            for (let i = 0; i < lis.length; i++) {
+                lis[i].addEventListener('mouseenter', function() {
+                        // 云朵移动到距离就是当前小li的offsetLeft值
+                        animation(cloud, this.offsetLeft)
+                    })
+                    // 鼠标离开时云朵恢复到初始位置
+                lis[i].addEventListener('mouseleave', function() {
+                        // cloud.style.left = 0
+                        // 鼠标离开时云朵返回其初始位置
+                        animation(cloud, current)
+                    })
+                    // 鼠标点击时云朵停留在当前小li
+                lis[i].addEventListener('click', function() {
+                    // 把当前云朵的offsetLeft值给current
+                    current = this.offsetLeft
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>
