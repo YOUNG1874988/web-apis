@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: orange;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <script>
+        var div = document.querySelector('div')
+        div.addEventListener('touchstart', function(e) {
+            console.log('hello juj')
+            console.log(e)
+        })
+        div.addEventListener('touchmove', function() {
+            console.log('hello yang')
+        })
+        div.addEventListener('touchend', function() {
+            console.log('hello tttt')
+        })
+
+
+        // function:drag the box to move by finger
+        // 定义4个变量来存储手指和盒子的坐标值
+        var startX = 0
+        var startY = 0
+        var x = 0
+        var y = 0
+        div.addEventListener('touchstart', function(e) {
+            // 开始触摸时获得盒子和手指的坐标值
+            // 盒子的初始坐标
+            startX = this.offsetLeft
+            startY = this.offsetTop
+                //手指的初始坐标
+            x = e.targetTouches[0].pageX
+            y = e.targetTouches[0].pageY
+        })
+        div.addEventListener('touchmove', function(e) {
+            // 计算出手指移动的距离
+            var moveX = e.targetTouches[0].pageX - x
+            var moveY = e.targetTouches[0].pageY - y
+                // 当前盒子的位置就是盒子的初始位置+手指移动的位置
+            this.style.left = startX + moveX + 'px'
+            this.style.top = startY + moveY + 'px'
+                // 阻止屏幕滚动的默认行为
+            e.preventDefault()
+        })
+    </script>
+
+</body>
+
+</html>
