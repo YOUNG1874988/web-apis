@@ -73,11 +73,17 @@
         var mainTop = document.querySelector('.main').offsetTop
             //由于滚动到是整个页面文档，所以要给文档添加滚动事件
         document.addEventListener('scroll', function() {
-            console.log('yyyyyy')
+            console.log('this is pageyoffset')
             console.log(window.pageYOffset)
+            console.log('this is html offsettop')
+            console.log(document.documentElement.offsetTop)
+            console.log('this is scrollTop')
+            console.log(document.documentElement.scrollTop)
                 // 当页面上面被卷去高度达到横幅上边沿到页面顶部到位置时，将返回顶部按钮改为fixed定位
+                // window.pageYoffset:页面上方被卷走的高度
+                // element.offsetTop:元素上边沿距离页面顶部的距离
+                // element.scrollTop:就是
             if (window.pageYOffset >= bannerTop) {
-                console.log('jjjjjj')
                 sliderbar.style.position = 'fixed'
                 sliderbar.style.top = sliderbarTop - 10 + 'px'
             } else {
@@ -93,6 +99,32 @@
                 goback.style.display = 'none'
             }
         })
+        sliderbar.addEventListener('click', function() {
+                // window.scroll(0, 0)
+                // 调用页面滚动动画函数
+                animation(window, 0)
+            })
+            // 点击返回顶部按钮优雅地返回顶部
+        function animation(obj, target, callback) {
+            // 每一个动画开始之前先清除之前的全部定时器
+            clearInterval(obj.timer)
+            obj.timer = setInterval(() => {
+                // 缓动步长计算,如果步长是整数就取整数并且往大取；如果步长是负数也取整数并往小取
+                // 这里的target减去的是一个要移动多少的对象
+                step = (target - window.pageYOffset) / 10
+                step = step > 0 ? Math.ceil(step) : Math.floor(step)
+                    // 这里的停止计时的条件要放到计时器里面，这样才能扫描到该条件并结束计时
+                if (window.pageYOffset == target) {
+                    clearInterval(obj.timer)
+                        // 当定时器结束当时候检查是否有回调函数；如果有则执行回调函数
+                }
+                // 这里的offsetLeft值是相对于obj最近的相对定位的元素的值
+                // obj.style.left = obj.offsetLeft + step + 'px'
+                // 
+                window.scroll(0, window.pageYOffset + step)
+                    // obj.style.top = obj.offsetTop + 5 + 'px'
+            }, 15);
+        }
     </script>
 
 </body>
