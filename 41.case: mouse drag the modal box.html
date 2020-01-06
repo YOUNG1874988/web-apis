@@ -143,7 +143,15 @@
             //     // 鼠标相对于页面的距离减去登录盒子的边距就是鼠标相对于登录盒子的位置
             //     var x = e.pageX - this.offsetLeft
             //     console.log(x)
-            // })
+            // }
+
+
+
+
+        //按下移动的核心思想是：用鼠标的即时坐标去影响盒子的即时坐标值；鼠标的即时坐标值减去数据距离盒子边沿的位置就是盒子的即时坐标值
+        // 即时坐标值就是鼠标对象e.pageX和e.pageY
+        // 影响的方式就是减去鼠标按下时鼠标距离盒子边沿的距离，这个距离可以在鼠标按下时计算得到
+        // 移动需要一个相对跟随变量，这里就是盒子的移动是跟随鼠标的移动的
         enterbox.addEventListener('mousedown', function(e) {
             // 1.当鼠标按下时获得鼠标在盒子内的坐标（鼠标相对于页面的坐标减去盒子相对于页面的坐标值）
             var x = e.pageX - enterbox.offsetLeft
@@ -152,7 +160,8 @@
 
             //2. 鼠标在移动时相对于页面的坐标减去x,y就是盒子的坐标值
 
-            document.addEventListener('mousemove', move)
+            document.addEventListener(
+                'mousemove', move)
 
             function move(e) {
                 console.log('hellojun')

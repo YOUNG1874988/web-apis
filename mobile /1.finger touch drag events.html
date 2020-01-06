@@ -37,6 +37,7 @@
 
 
         // function:drag the box to move by finger
+        // 核心思想：盒子的坐标是跟随手指触摸点的坐标的
         // 定义4个变量来存储手指和盒子的坐标值
         var startX = 0
         var startY = 0
@@ -47,7 +48,7 @@
             // 盒子的初始坐标
             startX = this.offsetLeft
             startY = this.offsetTop
-                //手指的初始坐标
+                //保存下手指的初始坐标
             x = e.targetTouches[0].pageX
             y = e.targetTouches[0].pageY
         })
