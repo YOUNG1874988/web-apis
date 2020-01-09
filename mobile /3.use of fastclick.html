@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- user-scalable = no:禁用用户缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 引入避免触摸延时的插件 -->
+    <script src="../js/fastclick.js"></script>
+    <script>
+        // 如何使用fastclick插件
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false)
+        }
+    </script>
+
+
+</body>
+
+</html>

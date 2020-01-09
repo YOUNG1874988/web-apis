@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 第 1步：引入js和css文件 -->
+
+
+
+    <!-- 引入zy.media.css -->
+    <link rel="stylesheet" href="../css/zy.media.css">
+    <!-- 引入zy.media.js -->
+    <script src="../js/zy.media.js"></script>
+    <style>
+        video {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 第2步：导入视频 -->
+    <div class="zy_media">
+        <video poster="test.jpg" data-config='{"mediaTitle": "《阿丽塔：战斗天使》--934美剧网"}'>
+            <source src="../movie/alita.mp4" type="video/mp4">
+            您的浏览器不支持HTML5视频
+        </video>
+    </div>
+    <script>
+        // 第3步：绑定媒体节点
+        zymedia('video', {
+            autoplay: true,
+            videoWidth: '20%',
+            videoHeight: '300',
+        });
+    </script>
+</body>
+
+</html>
