@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sessionstorage</title>
+</head>
+
+<body>
+    <input type="text">
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">删除数据</button>
+    <button class="del">删除所有数据</button>
+    <script>
+        var ipt = document.querySelector('input')
+        var set = document.querySelector('.set')
+        var get = document.querySelector('.get')
+        var rm = document.querySelector('.remove')
+        var del = document.querySelector('.del')
+            // localStorage中的数据可以在整个浏览器跨页面使用
+        console.log(localStorage.getItem('username'))
+            // 1.本地存储添加数据
+        set.addEventListener('click', function() {
+                // 点击之后把输入值存储到本地
+                var val = ipt.value
+                    // 存储数据到方法，window对象自带的
+                    // 只要不关闭浏览器窗口，存储的键和值是一只存在的；刷新也存在
+                sessionStorage.setItem('uname', val)
+                sessionStorage.setItem('password', val)
+                sessionStorage.setItem('hhhhh', val)
+            })
+            // 2.本地存储获取数据
+        get.addEventListener('click', function() {
+                var getSession = sessionStorage.getItem('uname')
+                console.log(getSession)
+            })
+            // 3.删除一个数据
+        rm.addEventListener('click', function() {
+                sessionStorage.removeItem('uname')
+            })
+            // 4.删除所有数据
+        del.addEventListener('click', function() {
+            sessionStorage.clear()
+        })
+    </script>
+</body>
+
+</html>

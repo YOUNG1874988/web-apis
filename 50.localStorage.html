@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>localstorage</title>
+</head>
+
+<body>
+    <!-- localStorage永久生效，除非手动删除，否则永远存在 -->
+    <input type="text">
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">删除数据</button>
+    <button class="del">删除所有数据</button>
+    <script>
+        var ipt = document.querySelector('input')
+        var set = document.querySelector('.set')
+        var get = document.querySelector('.get')
+        var rm = document.querySelector('.remove')
+        var del = document.querySelector('.del')
+            // 点击将输入值存储到本地
+        set.addEventListener('click', function() {
+                var val = ipt.value
+                localStorage.setItem('username', val)
+                localStorage.setItem('pwd', val)
+            })
+            // 点击获取本地存储中的数据
+        get.addEventListener('click', function() {
+                var tough = localStorage.getItem('username')
+                console.log(tough)
+            })
+            // 删除一个数据
+        rm.addEventListener('click', function() {
+                localStorage.removeItem('pwd')
+            })
+            // 删除全部数据
+        del.addEventListener('click', function() {
+            localStorage.clear()
+        })
+    </script>
+</body>
+
+</html>
