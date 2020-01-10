@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- function:如果记住用户名这个单选框是打钩的，那么
+        下次打开该页面时，文本框里自动显示着上次登录时的用户名 -->
+    <input type="text" id="username">
+    <label for="username">
+        <input type="checkbox" id="remember">
+        记住用户名
+
+    </label>
+    <script>
+        var username = document.querySelector('#username')
+        var remember = document.querySelector('#remember')
+            // 页面加载完成后判断localStorage是否有'username‘这个数据，
+            // 由于存储数据的时候设置的数据名就是'username'，所以这里用username
+        if (localStorage.getItem('username')) {
+            // 如果有，将复选框打钩
+            remember.checked = true
+                // 并将原本存在的username给当前的输入框
+            username.value = localStorage.getItem('username')
+        } else {
+            // 如果没有已经保存到本地的用户名，则输入框为空，并且复选框不打钩
+            remember.checked = false
+        }
+
+
+
+
+        // 如果用户不想保存其用户名，就把复选框去掉钩，并删除本地用户名
+        //change事件：监听改变之后的状态，比如这里的复选框改变后为checked 或者不是checked
+        remember.addEventListener('change', function() {
+            // this.checked = false
+            // localStorage.removeItem('username')
+            // 复选框被点击时判断其checked状态，如果为1表示本来是记住用户名，点击后要移除；否则相反
+            if (this.checked) {
+                // 如果改变后为打钩，把输入的用户名保存到本地
+                var val = username.value
+                localStorage.setItem('username', val)
+            } else {
+                //  否则移除保存的用户名
+                localStorage.removeItem('username')
+            }
+        })
+    </script>
+
+
+
+
+
+</body>
+
+</html>
